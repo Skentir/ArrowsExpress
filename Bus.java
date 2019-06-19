@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class Bus
 {
@@ -9,7 +10,7 @@ public class Bus
     @Override
     public int compare(Passenger a, Passenger b)
     {
-      return Math.signum(b.getPriority() - a.getPriority());
+      return b.getPriority() - a.getPriority();
     }
   }
 
@@ -31,7 +32,7 @@ public class Bus
   {
     this.plateNumber = plateNumber;
     this.capacity = capacity;
-    this.route = route
+    this.route = route;
   }
 
   public void load(Passenger person)
@@ -43,6 +44,21 @@ public class Bus
     }
     else
       System.out.println("Bus " + plateNumber + " is already full.");
+  }
+
+  public void unload()
+  {
+    Iterator i = passengers.iterator();
+    Passenger person = null;
+    while(i.hasNext())
+    {
+      person = (Passenger) i.next();
+      if (person.getStop() == stop)
+      {
+        i.remove();
+        System.out.println(person.getName() + "has dropped off.")
+      }
+    }
   }
 
 
