@@ -14,12 +14,26 @@ public class Bus
     }
   }
 
+  private static final int TERMINAL = -1;
+
   // Attributes
   private static final String[] ROUTES = new String[] { "MNL to STC", "STC to MNL" };
   private static final String[][] STOPS = new String[][]
   {
-    new String[] {  },
-    new String[] {  }
+    new String[]
+    {
+      "Mampalasan Toll Exit",
+      "Phase 6, San Jose Village",
+      "Milagros del Rosario Building (East Canopy)",
+      "Paseo CALTEX Gasoline Station (for trips AE 108 & AE 109)"
+    },
+    new String[]
+    {
+      "PETRON Gasoline Station along Gil Puyat Avenue",
+      "Gate 4 - Gokongwei Gate",
+      "Gate 2 - North Gate (HSSH)",
+      "Gate 1 - South Gate (LS Building Entrance)"
+    }
   };
 
   private final String plateNumber;
@@ -33,6 +47,7 @@ public class Bus
     this.plateNumber = plateNumber;
     this.capacity = capacity;
     this.route = route;
+    this.stop = TERMINAL;
   }
 
   public void load(Passenger person)
@@ -40,7 +55,7 @@ public class Bus
     if (passengers.size() < capacity)
     {
       passengers.add(person);
-      Collections.sort(passengers, new PassengerComparator());
+      sort();
     }
     else
       System.out.println("Bus " + plateNumber + " is already full.");
@@ -59,7 +74,21 @@ public class Bus
         System.out.println(person.getName() + "has dropped off.")
       }
     }
+    sort();
   }
 
+  private void sort()
+  {
+    Collections.sort(passengers, new PassengerComparator());
+  }
 
+  public void move()
+  {
+    stop++;
+    if (stop >= ROUTES[route].length)
+    {
+      stop = TERMINAL; // -1 means we are at the terminal
+      routes = (routes + 1) % ROUTES.length;
+    }
+  }
 }
