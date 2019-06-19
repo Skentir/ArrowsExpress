@@ -12,4 +12,13 @@ public Passenger (String name, int priorityLvl, int route, int stop){
   this.stop = stop;
 }
 
+public int getRoute()
+{
+  return route;
+}
+public int getStop()
+{
+  return stop;
+}
+
 }
