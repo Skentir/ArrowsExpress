@@ -61,5 +61,18 @@ public class Bus
     }
   }
 
+  public void move()
+  {
+    
+  }
 
+  public int getRoute()
+  {
+    return route;
+  }
+
+  public int getStop()
+  {
+    return stop;
+  }
 }
