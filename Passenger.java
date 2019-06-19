@@ -1,3 +1,7 @@
+/**
+ * The {@code Passenger} class represents a passenger in public transport, such
+ * as a bus.
+ */
 public class Passenger
 {
   // Attributes
