@@ -14,6 +14,8 @@ public class Bus
     }
   }
 
+  private static final int TERMINAL = -1;
+
   // Attributes
   private static final String[] ROUTES = new String[] { "MNL to STC", "STC to MNL" };
   private static final String[][] STOPS = new String[][]
@@ -45,6 +47,7 @@ public class Bus
     this.plateNumber = plateNumber;
     this.capacity = capacity;
     this.route = route;
+    this.stop = TERMINAL;
   }
 
   public void load(Passenger person)
