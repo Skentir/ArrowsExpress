@@ -17,8 +17,8 @@ public class Bus
   private static final int TERMINAL = -1;
 
   // Attributes
-  private static final String[] ROUTES = new String[] { "MNL to STC", "STC to MNL" };
-  private static final String[][] STOPS = new String[][]
+  public static final String[] ROUTES = new String[] { "MNL to STC", "STC to MNL" };
+  public static final String[][] STOPS = new String[][]
   {
     new String[]
     {
@@ -52,10 +52,10 @@ public class Bus
 
   public void load(Passenger person)
   {
-    if (passengers.size() < capacity)
+    if (!isFull())
     {
       passengers.add(person);
-      sort();
+      sortByStatus();
     }
     else
       System.out.println("Bus " + plateNumber + " is already full.");
@@ -77,7 +77,7 @@ public class Bus
     sort();
   }
 
-  private void sort()
+  private void sortByStatus()
   {
     Collections.sort(passengers, new PassengerComparator());
   }
@@ -91,4 +91,13 @@ public class Bus
       routes = (routes + 1) % ROUTES.length;
     }
   }
+
+  private boolean isFull()
+  {
+    if(passengers.size() < capacity)
+      return 1;
+    else
+      return 0;
+  }
+
 }
