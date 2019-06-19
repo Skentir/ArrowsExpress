@@ -55,7 +55,7 @@ public class Bus
     if (passengers.size() < capacity)
     {
       passengers.add(person);
-      Collections.sort(passengers, new PassengerComparator());
+      sort();
     }
     else
       System.out.println("Bus " + plateNumber + " is already full.");
@@ -74,20 +74,21 @@ public class Bus
         System.out.println(person.getName() + "has dropped off.")
       }
     }
+    sort();
+  }
+
+  private void sort()
+  {
+    Collections.sort(passengers, new PassengerComparator());
   }
 
   public void move()
   {
-
-  }
-
-  public int getRoute()
-  {
-    return route;
-  }
-
-  public int getStop()
-  {
-    return stop;
+    stop++;
+    if (stop >= ROUTES[route].length)
+    {
+      stop = TERMINAL; // -1 means we are at the terminal
+      routes = (routes + 1) % ROUTES.length;
+    }
   }
 }
