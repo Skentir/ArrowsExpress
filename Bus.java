@@ -18,8 +18,20 @@ public class Bus
   private static final String[] ROUTES = new String[] { "MNL to STC", "STC to MNL" };
   private static final String[][] STOPS = new String[][]
   {
-    new String[] {  },
-    new String[] {  }
+    new String[]
+    {
+      "Mampalasan Toll Exit",
+      "Phase 6, San Jose Village",
+      "Milagros del Rosario Building (East Canopy)",
+      "Paseo CALTEX Gasoline Station (for trips AE 108 & AE 109)"
+    },
+    new String[]
+    {
+      "PETRON Gasoline Station along Gil Puyat Avenue",
+      "Gate 4 - Gokongwei Gate",
+      "Gate 2 - North Gate (HSSH)",
+      "Gate 1 - South Gate (LS Building Entrance)"
+    }
   };
 
   private final String plateNumber;
@@ -63,7 +75,7 @@ public class Bus
 
   public void move()
   {
-    
+
   }
 
   public int getRoute()
