@@ -71,7 +71,7 @@ public class Bus
       if (person.getStop() == stop)
       {
         i.remove();
-        System.out.println(person.getName() + "has dropped off.")
+        System.out.println(person.getName() + "has dropped off.");
       }
     }
     sort();
