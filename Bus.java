@@ -77,15 +77,15 @@ public class Bus
       if (person.getStop() == stop)
         headcount++;
     }
-    
+
     while(headcount >= 0)
     {
-      for(Passenger person : passengers)
+      for(Passenger p : passengers)
       {
-        if(person.getPriority() == pLvl)
+        if(p.getPriority() == pLvl)
         {
-          passengers.remove(person);
-          System.out.println(person.getName() + "has dropped off.");
+          passengers.remove(p);
+          System.out.println(p.getName() + "has dropped off.");
           headcount--;
         }
       }
