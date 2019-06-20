@@ -68,16 +68,28 @@ public class Bus
 
   public void unload()
   {
+    int headcount, pLvl = 1;
     Iterator i = passengers.iterator();
     Passenger person = null;
     while (i.hasNext())
     {
       person = (Passenger) i.next();
       if (person.getStop() == stop)
+        headcount++;
+    }
+    
+    while(headcount >= 0)
+    {
+      for(Passenger person : passengers)
       {
-        i.remove();
-        System.out.println(person.getName() + "has dropped off.");
+        if(person.getPriority() == pLvl)
+        {
+          passengers.remove(person);
+          System.out.println(person.getName() + "has dropped off.");
+          headcount--;
+        }
       }
+      pLvl++;
     }
   }
 
