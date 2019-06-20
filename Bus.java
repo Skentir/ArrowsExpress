@@ -75,10 +75,9 @@ public class Bus
       if (person.getStop() == stop)
       {
         i.remove();
-        System.out.println(person.getName() + "has dropped off.")
+        System.out.println(person.getName() + "has dropped off.");
       }
     }
-    sort();
   }
 
   private void sortByStatus()
@@ -89,14 +88,14 @@ public class Bus
   public void move()
   {
     stop++;
-    if (stop >= ROUTES[route].length)
+    if (stop >= STOPS[route].length)
     {
       stop = TERMINAL; // -1 means we are at the terminal
-      routes = (routes + 1) % ROUTES.length;
+      route = (route + 1) % ROUTES.length;
     }
   }
 
-  private boolean isFull()
+  public boolean isFull()
   {
     return passengers.size() == capacity;
   }
