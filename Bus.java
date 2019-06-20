@@ -49,6 +49,7 @@ public class Bus
   public Bus(String plateNumber, int capacity, int route)
   {
     this.plateNumber = plateNumber;
+    this.passengers = new ArrayList<>();
     this.capacity = capacity;
     this.route = route;
     this.stop = TERMINAL;
