@@ -10,7 +10,11 @@ public class Bus
     @Override
     public int compare(Passenger a, Passenger b)
     {
-      return b.getPriority() - a.getPriority();
+      int stop = b.getStop() - a.getStop();
+      if (stop == 0)
+        return b.getPriority() - a.getPriority();
+      else
+        return stop;
     }
   }
 
@@ -65,7 +69,7 @@ public class Bus
   {
     Iterator i = passengers.iterator();
     Passenger person = null;
-    while(i.hasNext())
+    while (i.hasNext())
     {
       person = (Passenger) i.next();
       if (person.getStop() == stop)
@@ -94,10 +98,7 @@ public class Bus
 
   private boolean isFull()
   {
-    if(passengers.size() < capacity)
-      return 1;
-    else
-      return 0;
+    return passengers.size() == capacity;
   }
 
 }
