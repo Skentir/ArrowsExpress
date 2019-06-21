@@ -1,3 +1,9 @@
+
+/**
+ * The {@code Buss} class represents a bus that loads/unloads passengers
+ * and moves to different locations.
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -5,6 +11,10 @@ import java.util.Iterator;
 
 public class Bus
 {
+  /**
+    * Sorts the passengers by stop and priority level.
+    * Returns an integer of the difference of the two Passengers compared.
+    */
   public class PassengerComparator implements Comparator<Passenger>
   {
     @Override
@@ -45,7 +55,13 @@ public class Bus
   private ArrayList<Passenger> passengers;
   private int route;
   private int stop;
-
+  /**
+   * Constructs the {@code Bus} class.
+   *
+   * @param plateNumber the unique identfication String of a Bus
+   * @param capacity the maximum number of passengers it can hold
+   * @param route the route of the bus
+   */
   public Bus(String plateNumber, int capacity, int route)
   {
     this.plateNumber = plateNumber;
@@ -54,7 +70,12 @@ public class Bus
     this.route = route;
     this.stop = TERMINAL;
   }
-
+  /**
+    * Loads a person in the bus. Adds person to passengers ArrayList if
+    * the bus is not full. Sorts the passengers by stop and priority everytime
+    *  a person is loaded to the bus.
+    * @param person one Passenger that will be loaded to the bus
+    */
   public void load(Passenger person)
   {
     if (!isFull())
@@ -65,7 +86,10 @@ public class Bus
     else
       System.out.println("Bus " + plateNumber + " is already full.");
   }
-
+  /**
+    * Unloads a person in the bus. Removes persons in passengers ArrayList if
+    * the bus stop is the same with their stop.
+    */
   public void unload()
   {
     int headcount, pLvl = 1;
@@ -92,12 +116,17 @@ public class Bus
       pLvl++;
     }
   }
-
+  /**
+    * Sorting passengers using Collections.sort(passengers,comparator)
+    */
   private void sortByStatus()
   {
     Collections.sort(passengers, new PassengerComparator());
   }
-
+  /**
+    * Moves the current stop location to the next location. If next stop
+    * location is not in the array of stops, then it will be set to TERMINAL (-1).
+    */
   public void move()
   {
     stop++;
@@ -107,7 +136,11 @@ public class Bus
       route = (route + 1) % ROUTES.length;
     }
   }
-
+  /**
+   * Returns true if the bus is full, and false if not.
+   *
+   * @return a boolean value when called
+   */
   public boolean isFull()
   {
     return passengers.size() == capacity;
