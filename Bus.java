@@ -78,13 +78,35 @@ public class Bus
     */
   public void load(Passenger person)
   {
-    if (!isFull())
+    // check parameters
+    if (person.getRoute() != this.route)
     {
-      passengers.add(person);
-      sortByStatus();
+      System.out.println("Cannot load passenger with invalid route");
+      return;
+    }
+
+    if (person.getStop() < 0 || person.getStop() >= STOPS[this.route].length)
+    {
+      System.out.println("Cannot load passenger with invalid destination");
+      return;
+    }
+
+    if (this.stop != TERMINAL)
+    {
+      System.out.println("Cannot load passengers; bus " + plateNumber + " has already left the terminal.");
     }
     else
-      System.out.println("Bus " + plateNumber + " is already full.");
+    {
+      if (!isFull())
+      {
+        passengers.add(person);
+        sortByStatus();
+      }
+      else
+      {
+        System.out.println("Bus " + plateNumber + " is already full.");
+      }
+    }
   }
   /**
     * Unloads a person in the bus. Removes persons in passengers ArrayList if
@@ -100,7 +122,7 @@ public class Bus
       if (person.getStop() == stop)
       {
         i.remove();
-        System.out.println(person.getName() + "has dropped off.")
+        System.out.println(person.getName() + " has dropped off.")
       }
     }
   }
