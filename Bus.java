@@ -127,16 +127,9 @@ public class Bus
     }
   }
   /**
-    * Sorting passengers using Collections.sort(passengers,comparator)
-    */
-  private void sortByStatus()
-  {
-    Collections.sort(passengers, new PassengerComparator());
-  }
-  /**
-    * Moves the current stop location to the next location. If next stop
-    * location is not in the array of stops, then it will be set to TERMINAL (-1).
-    */
+   * Moves the current stop location to the next location. If next stop
+   * location is not in the array of stops, then it will be set to TERMINAL (-1).
+   */
   public void move()
   {
     stop++;
@@ -154,6 +147,13 @@ public class Bus
   public boolean isFull()
   {
     return passengers.size() == capacity;
+  }
+  /**
+   * Sorting passengers using Collections.sort(passengers,comparator)
+   */
+  private void sortByStatus()
+  {
+    Collections.sort(passengers, new PassengerComparator());
   }
 
 }
